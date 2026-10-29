@@ -13,21 +13,48 @@
 
       <div id="titleScreen" class="screen active">
         <div class="title-card">
-          <div class="brand">LAST ENCORE</div>
-          <div class="subtitle">THE LAST DANCE</div>
-          <div class="showman-portrait" aria-hidden="true"></div>
+          <div class="title-layout">
+            <div class="title-copy">
+              <div class="logo-stack">
+                <div class="logo">LAST ENCORE</div>
+                <div class="sublogo">THE LAST DANCE</div>
+              </div>
 
-          <div class="menu-stack">
-            <button id="startBtn" class="menu-btn primary">BEGIN THE ACT</button>
-            <button id="rehearsalBtn" class="menu-btn">REHEARSAL</button>
+              <div class="title-menu" aria-label="Main menu">
+                <button id="startBtn" class="menu-item selected"><span class="cursor">♥</span> Start</button>
+                <button class="menu-item"><span class="cursor">♥</span> Difficulty</button>
+                <button class="menu-item"><span class="cursor">♥</span> Settings</button>
+                <button class="menu-item"><span class="cursor">♥</span> Quit</button>
+              </div>
+            </div>
+
+            <div class="showman-scene" aria-hidden="true">
+              <div class="showman-art">
+                <div class="horn left"></div>
+                <div class="horn right"></div>
+                <div class="head">
+                  <div class="ear left"></div>
+                  <div class="ear right"></div>
+                  <div class="eye left"></div>
+                  <div class="eye right"></div>
+                  <div class="grin"></div>
+                </div>
+                <div class="collar"></div>
+                <div class="body"></div>
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+                <div class="tail"></div>
+              </div>
+            </div>
           </div>
 
-          <div class="settings-row">
+          <div class="title-bottom-row">
             <div class="difficulty-wrap">
               <button class="difficulty-btn" data-difficulty="easy">Easy</button>
               <button class="difficulty-btn active" data-difficulty="hard">Hard</button>
               <button class="difficulty-btn" data-difficulty="painful">Painful</button>
             </div>
+            <button id="rehearsalBtn" class="menu-btn small">Rehearsal</button>
             <button id="muteBtn" class="menu-btn small">Mute</button>
           </div>
         </div>
