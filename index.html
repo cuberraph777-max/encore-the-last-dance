@@ -1,1 +1,76 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#000000"><title>LAST ENCORE — The Showman</title><link rel="stylesheet" href="style.css"></head><body><main><section class="battle" aria-label="Undertale-style combat simulator"><div class="gamewrap"><canvas id="game" width="621" height="476" tabindex="0" aria-label="Battle arena. Arrow keys or WASD to move; Space to strike. On mobile drag your heart."></canvas><div class="speech" id="speech" aria-hidden="true"><span id="speechText"></span></div><aside id="thoughts" class="thoughts" hidden aria-live="polite"><span>BEHIND THE SMILE</span><p id="thoughtText"></p></aside><div class="dialogue" aria-live="polite"><span class="speaker">THE SHOWMAN</span><p id="line">* The Showman takes the stage.</p><span id="hint">Choose your entrance.</span></div><div id="subMenu" class="submenu" hidden></div><div class="actions"><button data-action="fight" aria-label="FIGHT"><span class="sr">FIGHT</span></button><button data-action="act" aria-label="ACT"><span class="sr">ACT</span></button><button data-action="item" aria-label="ITEM"><span class="sr" id="items">Tea × 3</span></button><button data-action="mercy" aria-label="MERCY"><span class="sr">MERCY</span></button></div><div id="overlay" class="overlay"><h1>LAST ENCORE</h1><p>* A sarcastic gargoyle blocks the way.</p><button id="start">♥ TAKE THE STAGE</button><label class="difficulty">DIFFICULTY <select id="difficulty"><option value="hard" selected>Hard · the intended show</option><option value="normal">Normal</option><option value="easy">Easy · more forgiving</option></select></label><label><input id="assist" type="checkbox"> Rehearsal mode · very gentle damage</label></div></div><div class="utility"><button id="music" aria-pressed="false">MUSIC OFF</button><button id="sound" aria-pressed="false">VOICE / SFX OFF</button><button id="pause">PAUSE</button><button id="restart">RESTART ↻</button></div><section id="musicPanel" class="musicpanel" hidden><div><strong>MEGALOVANIA · TOBY FOX</strong><p id="musicStatus">Use the player if playback does not start.</p><label class="audiofile">USE AN AUDIO FILE <input id="musicFile" type="file" accept="audio/*"></label><audio id="localMusic" loop controls hidden></audio></div><div id="musicFrame"></div></section><div class="instructions">WASD / ARROWS: MOVE · SPACE: STRIKE · P: PAUSE<br>TOUCH: DRAG YOUR HEART INSIDE THE BOX<br><span class="blue">BLUE CANES: HOLD STILL</span> · <span class="orange">ORANGE CANES: KEEP MOVING</span></div><details><summary>Encounter details</summary><p>SPOTLIGHTS: AIM → LOCK → FIRE. Leave the dotted line before it turns solid.</p><p>THE PERFORMANCE: Nine acts before the final bow, including the Shadow Company phase. Early finishing strikes are dodged. Four applause plus all nine acts unlock MERCY. Intermission restores HP and adds tea.</p><p>SOUL MODES: RED = FREE MOVE · GREEN = SHIELD · BLUE = JUMP · YELLOW = SHOOT · PURPLE = LANES</p><p id="actLabel">THE CURTAIN RISES</p><p>APPLAUSE <span id="applause">0 / 4</span> · HP <span id="hp">40 / 40</span></p><p id="status">ORIGINAL FAN ENCOUNTER · INSPIRED BY UNDERTALE</p></details><div class="sr track"><div id="hpbar"></div></div></section></main><script src="game.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <title>LAST ENCORE — The Last Dance</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game-app">
+      <canvas id="gameCanvas" width="960" height="600"></canvas>
+
+      <div id="titleScreen" class="screen active">
+        <div class="title-card">
+          <div class="brand">LAST ENCORE</div>
+          <div class="subtitle">THE LAST DANCE</div>
+          <div class="showman-portrait" aria-hidden="true"></div>
+
+          <div class="menu-stack">
+            <button id="startBtn" class="menu-btn primary">BEGIN THE ACT</button>
+            <button id="rehearsalBtn" class="menu-btn">REHEARSAL</button>
+          </div>
+
+          <div class="settings-row">
+            <div class="difficulty-wrap">
+              <button class="difficulty-btn" data-difficulty="easy">Easy</button>
+              <button class="difficulty-btn active" data-difficulty="hard">Hard</button>
+              <button class="difficulty-btn" data-difficulty="painful">Painful</button>
+            </div>
+            <button id="muteBtn" class="menu-btn small">Mute</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="hud" class="hud hidden">
+        <div class="top-row">
+          <div id="playerPanel" class="stat-box">
+            <span>YOU</span>
+            <strong id="playerHp">20 / 20</strong>
+          </div>
+          <div id="bossPanel" class="stat-box boss-box">
+            <span>SHOWMAN</span>
+            <strong id="bossHp">40 / 40</strong>
+          </div>
+        </div>
+
+        <div id="modePanel" class="mode-panel">
+          <button class="mode-btn active" data-mode="red">RED</button>
+          <button class="mode-btn" data-mode="green">GREEN</button>
+          <button class="mode-btn" data-mode="blue">BLUE</button>
+          <button class="mode-btn" data-mode="yellow">YELLOW</button>
+          <button class="mode-btn" data-mode="purple">PURPLE</button>
+        </div>
+
+        <div id="stateLine" class="state-line">The Showman is ready.</div>
+
+        <div id="actionMenu" class="battle-menu">
+          <button data-action="fight">FIGHT</button>
+          <button data-action="act">ACT</button>
+          <button data-action="item">ITEM</button>
+          <button data-action="mercy">MERCY</button>
+          <button data-action="check">CHECK</button>
+        </div>
+
+        <div id="subMenu" class="sub-menu hidden"></div>
+      </div>
+
+      <div id="dialogue" class="dialogue hidden"></div>
+      <div id="pauseOverlay" class="overlay hidden">PAUSED</div>
+      <div id="gameOverOverlay" class="overlay hidden">GAME OVER</div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
